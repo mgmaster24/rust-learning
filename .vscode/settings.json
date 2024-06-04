@@ -18,5 +18,13 @@
     "titleBar.inactiveBackground": "#d45b1999",
     "titleBar.inactiveForeground": "#e7e7e799"
   },
-  "peacock.remoteColor": "#d45b19"
+  "peacock.remoteColor": "#d45b19",
+  "rust-analyzer.linkedProjects": [
+    "rust-book/guessing_game/Cargo.toml",
+    "rust-book/hello_cargo/Cargo.toml",
+    "rust-book/exercises/Cargo.toml",
+    "rust-book/restaurant/Cargo.toml",
+    "rust-course/learning/Cargo.toml",
+    "rustlings/Cargo.toml"
+  ]
 }
