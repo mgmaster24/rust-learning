@@ -23,6 +23,8 @@
     "rust-book/guessing_game/Cargo.toml",
     "rust-book/hello_cargo/Cargo.toml",
     "rust-book/exercises/Cargo.toml",
+    "rust-book/adder/Cargo.toml",
+    "rust-book/grepex/Cargo.toml",
     "rust-book/restaurant/Cargo.toml",
     "rust-course/learning/Cargo.toml",
     "rustlings/Cargo.toml"

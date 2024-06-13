@@ -1,3 +1,4 @@
+use core::panic;
 use rand::Rng;
 use std::cmp::Ordering;
 
@@ -12,16 +13,17 @@ fn main() {
             .read_line(&mut guess)
             .expect("Failed to read line");
 
-        let guess: u32 = match guess.trim().parse() {
-            Ok(num) => num,
+        let guess: Guess = match guess.trim().parse() {
+            Ok(num) => Guess::new(num),
             Err(_) => {
                 println!("Please enter a number");
                 continue;
             }
         };
 
-        println!("You guessed: {guess}");
-        match guess.cmp(&secret_number) {
+        let val = guess.value;
+        println!("You guessed: {val}");
+        match val.cmp(&secret_number) {
             Ordering::Less => println!("Too Low!"),
             Ordering::Greater => println!("Too High!"),
             Ordering::Equal => {
@@ -29,5 +31,23 @@ fn main() {
                 break;
             }
         }
+    }
+}
+
+pub struct Guess {
+    value: i32,
+}
+
+impl Guess {
+    pub fn new(value: i32) -> Guess {
+        if value < 1 || value > 100 {
+            panic!("Guess value must be between 1 and 100. Got {}", value)
+        }
+
+        Guess { value }
+    }
+
+    pub fn value(&self) -> i32 {
+        self.value
     }
 }

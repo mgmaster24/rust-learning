@@ -61,8 +61,7 @@ fn median(v: &mut Vec<i32>) -> i32 {
     println!("half len {}", half_len);
     let mid = v[half_len];
     if len % 2 == 0 {
-        let mid2 = v[half_len + 1];
-        return (mid + mid2) / 2;
+        return (mid + v[half_len + 1]) / 2;
     }
 
     mid
@@ -92,17 +91,13 @@ fn convert_to_pig_latin(str: String) -> String {
     let mut words = Vec::new();
     for word in str.split_whitespace() {
         // take first char
-        let first_char = word.chars().nth(0).unwrap();
-        // is char a vowel?
-        let mut found_vowel = false;
-        for vowel in vec!['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'] {
-            if vowel == first_char {
-                words.push(format!("{}{}", word, "hay"));
-                found_vowel = true;
-            }
-        }
-
-        if !found_vowel {
+        let first_char = word
+            .chars()
+            .nth(0)
+            .expect("Word should have characters do to use of split");
+        if vec!['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'].contains(&first_char) {
+            words.push(format!("{}{}", word, "hay"));
+        } else {
             words.push(format!(
                 "{}{}",
                 &word[1..],

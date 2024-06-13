@@ -6,12 +6,14 @@ mod exercise;
 mod functions;
 mod input;
 mod mut_immut;
+mod pointers;
 mod slices;
 mod structs;
+mod traits;
 mod variables;
 
 use exercise::Exercise;
-use input::get_user_input;
+use input::{get_num_input, get_user_input};
 use variables::VariableExercise;
 
 #[derive(PartialEq, Eq, Hash, Debug)]
@@ -25,6 +27,8 @@ enum ExerciseModule {
     Enums,
     Collections,
     Employees,
+    Traits,
+    Pointers,
 }
 
 fn main() {
@@ -39,10 +43,12 @@ fn main() {
     exercises.insert(ExerciseModule::Enums, enums::exercise);
     exercises.insert(ExerciseModule::Collections, collections::exercise);
     exercises.insert(ExerciseModule::Employees, employees::exercise);
+    exercises.insert(ExerciseModule::Traits, traits::exercise);
+    exercises.insert(ExerciseModule::Pointers, pointers::exercise);
     loop {
         let mut choice_to_exercise = HashMap::new();
         println!("Please pick a exercise to run: (or q to exit)");
-        let mut index: usize = 1;
+        let mut index: i32 = 1;
         for key in exercises.keys() {
             choice_to_exercise.insert(index, key);
             let exercise_str = match key {
@@ -59,40 +65,33 @@ fn main() {
         match exercise.as_str() {
             "q" => break,
             "Q" => break,
-            _ => (),
+            _ => {
+                println!("\n");
+
+                let ex_num = get_num_input(exercise);
+                if ex_num < 1 || ex_num as usize > exercises.len() {
+                    println!("Please enter a value from the list above");
+                    continue;
+                }
+
+                match choice_to_exercise.get(&ex_num) {
+                    Some(em) => {
+                        match exercises.get(em) {
+                            Some(f) => f(),
+                            None => {
+                                println!("No exercise found for this module");
+                                continue;
+                            }
+                        };
+                    }
+                    None => {
+                        println!("No choice for that value. Please choose again!");
+                        continue;
+                    }
+                };
+
+                println!("\n")
+            }
         }
-
-        println!("\n");
-
-        let ex_num: usize = match exercise.parse() {
-            Ok(num) => num,
-            Err(_) => {
-                println!("Please enter an exercise number or q");
-                continue;
-            }
-        };
-
-        if ex_num < 1 || ex_num > exercises.len() {
-            println!("Please enter a value from the list above");
-            continue;
-        }
-
-        let module = match choice_to_exercise.get(&ex_num) {
-            Some(em) => em,
-            None => {
-                println!("No choice for that value. Please choose again!");
-                continue;
-            }
-        };
-
-        match exercises.get(module) {
-            Some(f) => f(),
-            None => {
-                println!("No exercise found for this module");
-                continue;
-            }
-        };
-
-        println!("\n")
     }
 }

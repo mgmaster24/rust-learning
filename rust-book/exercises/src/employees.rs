@@ -1,4 +1,4 @@
-use crate::input::get_user_input;
+use crate::input::{get_num_input, get_user_input};
 use std::collections::HashMap;
 
 #[derive(PartialEq, Eq, Hash, Debug)]
@@ -19,8 +19,7 @@ pub fn exercise() {
         println!("2. List Employees by Department");
         println!("q. Quit");
 
-        let choice = get_user_input();
-        match choice.as_str() {
+        match get_user_input().as_str() {
             "1" => add_employee(&mut employees),
             "2" => list_employees_by_department(&mut employees),
             "q" => break,
@@ -33,11 +32,10 @@ pub fn exercise() {
 fn add_employee(employees: &mut HashMap<Department, Vec<String>>) {
     println!("Please enter the employees name:");
     let name = get_user_input();
-    let department: Department;
 
     loop {
         println!("Please choose a department from the list below:");
-        let mut i: usize = 1;
+        let mut i: i32 = 1;
         let mut choices = HashMap::new();
         for dept in vec![
             Department::Engineering,
@@ -54,16 +52,17 @@ fn add_employee(employees: &mut HashMap<Department, Vec<String>>) {
             choices.insert(i, dept);
             i += 1;
         }
-        let input = get_user_input();
-        let dept_num: usize = match input.parse() {
-            Ok(num) => num,
-            Err(_) => {
-                println!("Please enter a department number.");
-                continue;
-            }
-        };
 
-        department = match choices.get(&dept_num).unwrap() {
+        let dept_num: i32 = get_num_input(get_user_input());
+        if dept_num < 1 || dept_num > ((choices.keys().len()) as i32) {
+            continue;
+        }
+
+        // unwrap here because we guaranteed the values
+        let department = match choices
+            .get(&dept_num)
+            .expect("Conditional above guarantees valid department choice from map")
+        {
             Department::Engineering => Department::Engineering,
             Department::ProductDevelopment => Department::ProductDevelopment,
             Department::Sales => Department::Sales,
