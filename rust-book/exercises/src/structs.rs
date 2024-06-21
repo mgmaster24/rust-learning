@@ -31,7 +31,6 @@ impl Rectangle {
 }
 
 pub fn exercise() {
-    println!("---------------Running Structs Exercise---------------");
     let user = User {
         active: true,
         username: String::from("mgmaster"),
@@ -112,7 +111,6 @@ pub fn exercise() {
 
     let square = Rectangle::square(42);
     println!("My square: {:?}", square);
-    println!("---------------Exiting Structs Exercise---------------\n");
 }
 
 fn build_user(email: String, username: String) -> User {

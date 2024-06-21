@@ -27,7 +27,6 @@ fn value_in_cents(coin: Coin) -> u8 {
 }
 
 pub fn exercise() {
-    println!("---------------Running Enums Exercise---------------");
     let v4 = IpAddrKind::V4;
     route(v4);
     let v6 = IpAddrKind::V6;
@@ -51,8 +50,6 @@ pub fn exercise() {
     print_value(five);
     print_value(six);
     print_value(none);
-
-    println!("---------------Exiting Enums Exercise---------------\n");
 }
 
 fn plus_one(lhs: Option<i32>) -> Option<i32> {

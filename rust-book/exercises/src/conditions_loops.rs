@@ -1,6 +1,4 @@
 pub fn exercise() {
-    println!("---------------Running Loops And Conditions Exercise---------------");
-
     // conditionals and loops
     let val = add(24, 19);
     println!("Value of add: {val}");
@@ -17,8 +15,6 @@ pub fn exercise() {
             break;
         }
     }
-
-    println!("---------------Exiting Loops And Conditions Exercise---------------\n");
 }
 
 fn add(x: i64, y: i64) -> i64 {

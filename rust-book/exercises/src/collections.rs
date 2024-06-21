@@ -8,8 +8,6 @@ enum SpreadSheetCell {
 }
 
 pub fn exercise() {
-    println!("---------------Running Collections Exercise---------------");
-
     let mut v = vec![1, 2, 3, 4, 5];
     v.push(6);
 
@@ -50,8 +48,6 @@ pub fn exercise() {
     let input = get_user_input();
     let converted = convert_to_pig_latin(input);
     println!("Your converted string is:\n{}", converted);
-
-    println!("---------------Exiting Collections Exercise---------------");
 }
 
 fn median(v: &mut Vec<i32>) -> i32 {
