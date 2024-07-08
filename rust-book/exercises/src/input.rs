@@ -8,9 +8,21 @@ pub fn get_user_input() -> String {
 
 pub fn get_num_input(input: String) -> i32 {
     let val: i32 = input.parse().unwrap_or_else(|_| {
-        println!("Please enter a department number.");
         -1
     });
 
     val
+}
+
+pub fn execute_or_quit(func: fn(str: &str)) -> bool{
+    match get_user_input().as_str() {
+        "q" => false,
+        "Q" => false,
+        other => {
+            println!("\n");
+            func(other);
+            println!("\n");
+            true
+        }
+    }
 }
