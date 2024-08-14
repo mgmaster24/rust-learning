@@ -6,15 +6,13 @@ pub fn get_user_input() -> String {
     return input.trim().to_string();
 }
 
-pub fn get_num_input(input: String) -> i32 {
-    let val: i32 = input.parse().unwrap_or_else(|_| {
-        -1
-    });
+pub fn get_num_input(input: &str) -> i32 {
+    let val: i32 = input.parse().unwrap_or_else(|_| -1);
 
     val
 }
 
-pub fn execute_or_quit(func: fn(str: &str)) -> bool{
+pub fn execute_or_quit(func: fn(str: &str)) -> bool {
     match get_user_input().as_str() {
         "q" => false,
         "Q" => false,

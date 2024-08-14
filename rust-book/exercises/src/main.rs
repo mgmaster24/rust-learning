@@ -1,19 +1,19 @@
-mod collections;
-mod conditions_loops;
-mod employees;
+mod common_collections;
+mod concurrency;
+mod cpc;
 mod enums;
 mod exercise;
-mod functions;
 mod input;
-mod mut_immut;
+mod model;
+mod mutex;
+mod oop;
+mod patterns;
 mod pointers;
 mod slices;
 mod structs;
 mod traits;
-mod variables;
 mod tree;
-mod concurrency;
-mod mutex;
+mod advanced_features;
 
 use input::{get_num_input, get_user_input};
 
@@ -27,10 +27,10 @@ fn main() {
             "Q" => break,
             other => {
                 println!("\n");
-                match chapters.get(&get_num_input(other.to_string())) {
+                match chapters.get(&get_num_input(other)) {
                     Some(c) => {
                         exercise::run_chapter(c);
-                    },
+                    }
                     None => {
                         println!("No choice for that value. Please choose again!");
                         continue;

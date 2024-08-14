@@ -53,7 +53,7 @@ fn add_employee(employees: &mut HashMap<Department, Vec<String>>) {
             i += 1;
         }
 
-        let dept_num: i32 = get_num_input(get_user_input());
+        let dept_num: i32 = get_num_input(get_user_input().as_str());
         if dept_num < 1 || dept_num > ((choices.keys().len()) as i32) {
             continue;
         }
