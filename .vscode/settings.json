@@ -21,12 +21,14 @@
   "peacock.remoteColor": "#d45b19",
   "rust-analyzer.linkedProjects": [
     "rust-book/guessing_game/Cargo.toml",
-    "rust-book/hello_cargo/Cargo.toml",
     "rust-book/exercises/Cargo.toml",
     "rust-book/adder/Cargo.toml",
     "rust-book/grepex/Cargo.toml",
     "rust-book/messenger/Cargo.toml",
     "rust-book/restaurant/Cargo.toml",
+    "rust-book/hello_macro/Cargo.toml",
+    "rust-book/hello_macro_derive/Cargo.toml",
+    "rust-book/hello_web_server/Cargo.toml",
     "rust-course/learning/Cargo.toml",
     "rustlings/Cargo.toml"
   ]

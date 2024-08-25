@@ -1,3 +1,4 @@
+mod advanced_features;
 mod common_collections;
 mod concurrency;
 mod cpc;
@@ -5,15 +6,12 @@ mod enums;
 mod exercise;
 mod input;
 mod model;
-mod mutex;
 mod oop;
 mod patterns;
 mod pointers;
 mod slices;
 mod structs;
 mod traits;
-mod tree;
-mod advanced_features;
 
 use input::{get_num_input, get_user_input};
 

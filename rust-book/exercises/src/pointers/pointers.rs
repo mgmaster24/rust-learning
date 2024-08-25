@@ -1,10 +1,13 @@
-use std::{cell::RefCell, ops::{Deref, DerefMut}, rc::Rc};
-
+use std::{
+    cell::RefCell,
+    ops::{Deref, DerefMut},
+    rc::Rc,
+};
 
 // ******************* Structures for examples ********************************** //
-use crate::pointers::List::{Cons, Nil};
-use crate::pointers::RcList::{RcCons, RcNil};
-use crate::pointers::RcRefCellList::{RcRefCons, RcRefNil};
+use crate::pointers::pointers::List::{Cons, Nil};
+use crate::pointers::pointers::RcList::{RcCons, RcNil};
+use crate::pointers::pointers::RcRefCellList::{RcRefCons, RcRefNil};
 
 // Cons list implementation
 enum List<T> {
@@ -19,7 +22,7 @@ enum RcList<T> {
 #[derive(Debug)]
 enum RcRefCellList<T> {
     RcRefCons(Rc<RefCell<T>>, Rc<RcRefCellList<T>>),
-    RcRefNil
+    RcRefNil,
 }
 
 struct MySmartPointer {
@@ -62,9 +65,9 @@ pub fn exercise() {
     my_box_examples();
 
     my_smart_pointer_examples();
-    
+
     rc_list_examples();
-    
+
     rc_ref_cell_list_examples();
 }
 

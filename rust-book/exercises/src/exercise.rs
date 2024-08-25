@@ -1,8 +1,8 @@
 use std::collections::BTreeMap;
 
 use crate::{
-    advanced_features, common_collections, concurrency, cpc, enums, mutex, oop, patterns, pointers,
-    slices, structs, traits, tree,
+    advanced_features, common_collections, concurrency, cpc, enums, oop, patterns, pointers,
+    slices, structs, traits,
 };
 
 use crate::input::{get_num_input, get_user_input};
@@ -112,11 +112,11 @@ pub fn build_chapters() -> BTreeMap<i32, Chapter> {
             exercises: vec![
                 Exercise {
                     description: String::from("Pointers"),
-                    run: pointers::exercise,
+                    run: pointers::pointers::exercise,
                 },
                 Exercise {
                     description: String::from("Tree"),
-                    run: tree::exercise,
+                    run: pointers::tree::exercise,
                 },
             ],
         },
@@ -129,11 +129,11 @@ pub fn build_chapters() -> BTreeMap<i32, Chapter> {
             exercises: vec![
                 Exercise {
                     description: String::from("Concurrency"),
-                    run: concurrency::exercise,
+                    run: concurrency::concurrency::exercise,
                 },
                 Exercise {
                     description: String::from("Mutexes"),
-                    run: mutex::exercise,
+                    run: concurrency::mutex::exercise,
                 },
             ],
         },
@@ -201,10 +201,24 @@ pub fn build_chapters() -> BTreeMap<i32, Chapter> {
         19,
         Chapter {
             title: String::from("Advanced Features"),
-            exercises: vec![Exercise {
-                description: String::from("Unsafe Rust"),
-                run: advanced_features::unsafe_rust::exercise,
-            }],
+            exercises: vec![
+                Exercise {
+                    description: String::from("Unsafe Rust"),
+                    run: advanced_features::unsafe_rust::exercise,
+                },
+                Exercise {
+                    description: String::from("Advanced Traits"),
+                    run: advanced_features::advanced_traits::exercise,
+                },
+                Exercise {
+                    description: String::from("Advanced Types, Functions and Closures"),
+                    run: advanced_features::advanced_types::exercise,
+                },
+                Exercise {
+                    description: String::from("Macros"),
+                    run: advanced_features::macros::exercise,
+                },
+            ],
         },
     );
 
