@@ -32,6 +32,11 @@ fn main() {
             }
         }
     }
+
+    let y = false;
+    if y {
+        println!("this is poorly formatted");
+    }
 }
 
 pub struct Guess {
